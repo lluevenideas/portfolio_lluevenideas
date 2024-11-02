@@ -11,9 +11,7 @@ const AboutCard = ({ itemData }: { itemData: IAbout }) => {
         className={`${style} relative w-72 h-96 border-[8px] border-blue-500  overflow-hidden flex items-end justify-center`}
       >
         <Image src={bg} layout="fill" objectFit="cover" alt={title} />
-        <p
-          className={`${mb} absolute font-extrabold text-3xl m-6 text-right w-60`}
-        >
+        <p className=" absolute font-extrabold text-3xl  text-right w-60 h-40">
           {title}
         </p>
       </div>
