@@ -6,12 +6,18 @@ const AboutCard = ({ itemData }: { itemData: IAbout }) => {
   const { title, description, bg, style, mb } = itemData;
 
   return (
-    <div className="flex flex-col items-center text-center w-[30vw]  content-center">
+    <div className="flex flex-col items-center text-center w-[30vw] content-center">
       <div
-        className={`${style} relative w-72 h-96 border-[8px] border-blue-500  overflow-hidden flex items-end justify-center`}
+        className={`${style} relative w-72 h-96 border-[8px] border-blue-500 overflow-hidden flex items-end justify-center z-0 hover:bg-blue-500`}
       >
-        <Image src={bg} layout="fill" objectFit="cover" alt={title} />
-        <p className=" absolute font-extrabold text-3xl  text-right w-60 h-40">
+        <Image
+          src={bg}
+          layout="fill"
+          objectFit="cover"
+          alt={title}
+          className="transition duration-300 ease-in-out hover:brightness-20 hover:opacity-0 "
+        />
+        <p className="absolute font-extrabold text-3xl text-right w-60 h-40">
           {title}
         </p>
       </div>
