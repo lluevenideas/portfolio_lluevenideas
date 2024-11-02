@@ -8,7 +8,7 @@ const AboutCard = ({ itemData }: { itemData: IAbout }) => {
   return (
     <div className="flex flex-col items-center text-center w-[30vw] content-center">
       <div
-        className={`${style} relative w-72 h-96 border-[8px] border-blue-500 overflow-hidden flex items-end justify-center z-0 hover:bg-blue-500`}
+        className={`${style} relative w-72 h-96 border-[8px] border-blue-400 overflow-hidden flex items-end justify-center z-0 hover:bg-blue-400`}
       >
         <Image
           src={bg}
