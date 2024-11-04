@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ranga:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +9,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #0093FD;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,9 +22,20 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+.logo-font {
+  font-family: "Aclonica", sans-serif;
+  font-size: 200px;
+  font-weight: 400;
+  font-style: normal;
 }
 
+.logo-font-ven {
+  font-family: "Ranga", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
