@@ -26,15 +26,12 @@ body {
 }
 .logo-font {
   font-family: "Aclonica", sans-serif;
-  font-size: 200px;
-  font-weight: 400;
-  font-style: normal;
+ 
 }
 
 .logo-font-ven {
   font-family: "Ranga", cursive;
-  font-weight: 400;
-  font-style: normal;
+
 }
 @layer utilities {
   .text-balance {
