@@ -17,7 +17,7 @@ const FooterSection = () => {
           justifyContent: "space-around",
           alignItems: "center",
           width: "90%",
-          height: "100%"
+          height: "100%",
         }}
       >
         <div className="marca">
@@ -30,18 +30,25 @@ const FooterSection = () => {
               height: "2.5rem",
             }}
           ></div>
-          <p style={{
-            color: "#ffffff"
-          }}>Diseñadores y desarrolladores web.</p>
+          <p
+            style={{
+              color: "#ffffff",
+            }}
+          >
+            Diseñadores y desarrolladores web.
+          </p>
         </div>
 
-        <div className="copyright" style={{
+        <div
+          className="copyright"
+          style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-end",
             alignItems: "center",
             height: "70%",
-        }}>
+          }}
+        >
           <div
             className="separador"
             style={{
@@ -54,7 +61,7 @@ const FooterSection = () => {
             <p
               style={{
                 color: "#FFFFFF",
-                marginTop: "1.2rem"
+                marginTop: "1.2rem",
               }}
             >
               (C) 2024 - LluevenIdeas Tecnologías - Todos los derechos
@@ -80,21 +87,21 @@ const FooterSection = () => {
                 color: "#FFFFFF",
               }}
             >
-              Servicios
+              <a href="#">Servicios</a>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              Nosotros
+              <a href="#">Nosotros</a>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              Contacto
+              <a href="#">Contacto</a>
             </h4>
           </div>
           <div
@@ -108,21 +115,21 @@ const FooterSection = () => {
                 color: "#FFFFFF",
               }}
             >
-              Instagram
+              <a href="#">Instagram</a>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              LinkedIn
+              <a href="#">LinkedIn</a>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              WhatsApp
+              <a href="#">WhatsApp</a>
             </h4>
           </div>
         </div>
