@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ranga:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +9,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #0093FD;
 }
 html {
   scroll-behavior: smooth;
@@ -20,16 +25,17 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
+
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-
 .aboutCard1 {
   border-top-left-radius: 150px;
   border-bottom-left-radius: 150px;
