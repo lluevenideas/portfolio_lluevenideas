@@ -1,106 +1,84 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React, { useRef } from "react";
+import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
+import data_projects from "../../utils/data.project"
+import Link from "next/link";
 
-const projects = [
-  {
-    title: "ZPMC SPARES",
 
-    tags: ["Página web", "Diseño UX/UI"],
-    imageUrl: "/project1.jpg",
-  },
-  {
-    title: "PERCUBATERISTAS ONLINE",
-    tags: ["Página web", "Diseño UX/UI"],
-    imageUrl: "/project2.jpg",
-  },
-  {
-    title: "Shop E-commerce",
-    tags: ["E-Commerce", "Diseño UX/UI", "SEO integrado"],
-    imageUrl: "/project3.jpg",
-  },
-];
+const ProjectSection1
+  = () => {
 
-const ProjectsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+    const horizontalSection = useRef<HTMLDivElement>(null);
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+    useGSAP(() => {
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const slides = gsap.utils.toArray('.horizontal-panel');
+      gsap.to(slides, {
+        xPercent: -100 * (slides.length - 1),
+        ease: 'none',
+        duration: 1,
+        scrollTrigger: {
+          trigger: horizontalSection.current,
+
+          pin: true,
+          scrub: 1,
+          snap: 1 / (slides.length - 1),
+          end: "+=3500",
+        },
+      });
+    },
+      { dependencies: [], scope: horizontalSection, revertOnUpdate: true }
     );
-  };
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  return (
-    <div
-      id="proyectos"
-      className="flex-col bg-black text-white w-full h-[100vh] content-center justify-center items-center"
-    >
-      <div className="w-full h-full justify-center content-center items-center">
-        <h1 className="text-left font-extrabold text-7xl pl-16 py-8">
+    return (
+      <section ref={horizontalSection} className="overflow-x-hidden section-container bg-[--color-bg-store]">
+        <div className="text-left font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl my-12">
           Descubre nuestros últimos proyectos
-        </h1>
-        <div className="w-auto mx-16 h-[2px] bg-gradient-to-r from-black to-white"></div>
-
-        <div className="flex sm:h-[80%] justify-center items-center mt-8 ">
-          <div className="relative w-full h-[65%] flex justify-center items-cemter overflow-hidden">
-            <div
-              className="flex transition-all duration-700 ease-in-out transform gap-10  ml-16 "
-              style={{ transform: `translateX(-${currentIndex * 35}%)` }}
-            >
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 "
-                  style={{ width: "auto", height: "100%" }}
-                >
-                  <div className=" h-full">
-                    <img
-                      src={project.imageUrl}
-                      alt={project.title}
-                      className="w-auto h-[75%] object-cover"
-                    />
-                    <div className=" flex flex-row-reverse justify-between pl-3">
-                      <h2 className="text-2xl text-right font-bold mt-4 text-blue-500 ">
-                        {project.title}
-                      </h2>
-                      <div className="mt-4 flex flex-col  gap-2 ">
-                        {project.tags.map((tag, tagIndex) => (
-                          <p
-                            key={tagIndex}
-                            className="border-[1px] border-blue-600  text-white text-xs font-semibold py-1 px-3 rounded-full"
-                          >
-                            {tag}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
+        </div>
+        <div className="w-fill-available mx-16 h-[2px] bg-gradient-to-r from-white to-black"></div>
+        <div className="horizontal-section">
+          {data_projects && data_projects.map((project, index) => (
+            <div key={index} className="horizontal-panel ">
+              <div className=" h-full">
+                <Link 
+                  href={project.link}
+                  target="_blank">
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="image transition-transform duration-300 hover:scale-105"
+                  />
+                </Link>
+                <div className=" flex flex-row-reverse justify-between pl-3">
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    className="text-2xl text-right font-bold mt-4 text-[--primary-color] " >
+                    {project.title}
+                  </Link>
+                  <div className="mt-4 flex flex-col gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <p
+                        key={tagIndex}
+                        className="border-[1px] border-[--primary-color]  text-white text-xs font-semibold py-1 px-3 rounded-full"
+                      >
+                        {tag}
+                      </p>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-
-            <button
-              onClick={handlePrev}
-              className="absolute text-7xl left-0 w-16 h-full bg-black  hover:bg-blue-950"
-            >
-              ‹
-            </button>
-            <button
-              onClick={handleNext}
-              className="absolute text-7xl right-0 w-16 h-full bg-black  hover:bg-blue-950"
-            >
-              ›
-            </button>
-          </div>
+          ))}
         </div>
-      </div>
-    </div>
-  );
-};
+      </section>
+    );
+  }
 
-export default ProjectsSection;
+export default ProjectSection1
+  ;

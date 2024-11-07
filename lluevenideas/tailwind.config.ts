@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      width: {
+        'fill-available': '-webkit-fill-available',
+      },
     },
   },
   plugins: [],
