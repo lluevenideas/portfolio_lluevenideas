@@ -24,52 +24,8 @@ body {
   background: var(--background);
   font-family: 'Poppins', sans-serif;
 }
-/* -------     HERO SECTION   --------  */
-.logo-font {
-  font-family: "Aclonica", sans-serif;
-}
-
-.logo-font-ven {
-  font-family: "Ranga", cursive;
-}
-
-.text-shadow {
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.405);
-}
-.text-shadow-none {
-  text-shadow: none;
-}
 
 
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-.gota-animation {
-  animation: heartbeat 1.5s infinite;
-}
-
-
-/* ---------mancha de pintura------ */
-
-.new-section {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.new-section.show {
-  opacity: 1;
-}
-
-
-
-
-/* ---------------------------------- */
 
 @layer utilities {
   .text-balance {
