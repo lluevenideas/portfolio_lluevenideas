@@ -52,7 +52,7 @@ const ContactSection = () => {
               target="_blank"
               className="p-2 w-[70%] h-1/6 text-center content-center  bg-blue-500 border-[2px] border-black text-white font-bold text-2xl rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-2xl"
             >
-              Consultar presupuesto!
+              Consultar presupuesto
             </Link>
           </div>
         </div>
