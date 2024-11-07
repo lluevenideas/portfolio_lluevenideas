@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const FooterSection = () => {
   return (
     <div
@@ -87,21 +89,28 @@ const FooterSection = () => {
                 color: "#FFFFFF",
               }}
             >
-              <a href="#">Servicios</a>
+              <Link href={"#aboutUs"}>Servicios</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <a href="#">Nosotros</a>
+              <Link href={"#proyectos"}>Proyectos</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <a href="#">Contacto</a>
+              <Link href={"#conocenos"}>Nosotros</Link>
+            </h4>
+            <h4
+              style={{
+                color: "#FFFFFF",
+              }}
+            >
+              <Link href={"#contacto"}>Contacto</Link>
             </h4>
           </div>
           <div
@@ -115,21 +124,21 @@ const FooterSection = () => {
                 color: "#FFFFFF",
               }}
             >
-              <a href="#">Instagram</a>
+              <Link href={"#about"}>Instagram</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <a href="#">LinkedIn</a>
+              <Link href={"#about"}>LinkedIn</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <a href="#">WhatsApp</a>
+              <Link href={"#about"}>WhatsApp</Link>
             </h4>
           </div>
         </div>

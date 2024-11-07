@@ -1,6 +1,7 @@
 const ConocenosSection = () => {
   return (
     <div
+      id="conocenos"
       className="flex flex-col bg-white text-black w-full min-h-screen items-center px-8 py-16"
       style={{
         backgroundImage: `url('/conocenos.jpg')`,

@@ -36,7 +36,10 @@ const ProjectsSection = () => {
   };
 
   return (
-    <div className="flex-col bg-black text-white w-full h-[100vh] content-center justify-center items-center">
+    <div
+      id="proyectos"
+      className="flex-col bg-black text-white w-full h-[100vh] content-center justify-center items-center"
+    >
       <div className="w-full h-full justify-center content-center items-center">
         <h1 className="text-left font-extrabold text-7xl pl-16 py-8">
           Descubre nuestros últimos proyectos
