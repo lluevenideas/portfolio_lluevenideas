@@ -11,7 +11,10 @@
   --foreground: #171717;
   --primary-color: #0093FD;
 }
-
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -23,6 +26,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { IAbout } from "@/utils/interfaces";
 import Image from "next/image";
 import "@/app/globals.css";
