@@ -1,7 +1,8 @@
-export interface IAbout {
+
+export interface IServices {
   title: string;
   description: string;
+  image: string
   bg: string;
-  style: string;
-  mb: string;
+  bg_bottom: string;
 }
