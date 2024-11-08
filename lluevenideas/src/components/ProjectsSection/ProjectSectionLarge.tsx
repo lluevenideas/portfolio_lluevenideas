@@ -35,7 +35,7 @@ const ProjectSectionLarge = () => {
 
   return (
     <section id="projects" ref={horizontalSection} className="overflow-x-hidden section-container bg-black">
-      <div className="text-left font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl my-12">
+      <div className="text-left ml-16 font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl my-12">
         Descubre nuestros últimos proyectos
       </div>
       <div className="w-fill-available mx-16 h-[2px] bg-gradient-to-r from-white to-black"></div>
