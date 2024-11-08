@@ -1,10 +1,10 @@
 import { IAbout } from "@/utils/interfaces";
 import AboutCard from "./AboutCard";
 import { AboutArray } from "@/utils/AboutArray";
-const AboutUsSection = () => {
+const OurServicesSection = () => {
   return (
     <div
-      id="aboutUs"
+      id="services"
       className="flex-col bg-white text-black w-full h-[100vh] content-center justify-center items-center "
     >
       <div className="w-full h-full justify-center content-center items-center ">
@@ -23,4 +23,4 @@ const AboutUsSection = () => {
   );
 };
 
-export default AboutUsSection;
+export default OurServicesSection;
