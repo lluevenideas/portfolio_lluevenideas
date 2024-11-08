@@ -89,28 +89,28 @@ const FooterSection = () => {
                 color: "#FFFFFF",
               }}
             >
-              <Link href={"#aboutUs"}>Servicios</Link>
+              <Link href={"#services"}>Servicios</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <Link href={"#proyectos"}>Proyectos</Link>
+              <Link href={"#projects"}>Proyectos</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <Link href={"#conocenos"}>Nosotros</Link>
+              <Link href={"#about"}>Nosotros</Link>
             </h4>
             <h4
               style={{
                 color: "#FFFFFF",
               }}
             >
-              <Link href={"#contacto"}>Contacto</Link>
+              <Link href={"#contact"}>Contacto</Link>
             </h4>
           </div>
           <div

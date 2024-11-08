@@ -31,7 +31,7 @@ const HeroPrueba = () => {
   }, [lluevenIdeas]);
 
   return (
-    <div className="boxes-container w-full min-h-screen bg-black flex flex-col 
+    <div id="home" className="boxes-container w-full min-h-screen bg-black flex flex-col 
     items-center justify-center p-4 text-black relative"
       style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
       <div className="text-center flex items-end relative">
