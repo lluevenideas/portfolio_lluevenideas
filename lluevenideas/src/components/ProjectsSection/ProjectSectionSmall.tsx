@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ProjectSectionSmall = () => {
   return (
-    <section className="bg-black px-4 py-8">
+    <section id='projects' className="bg-black px-4 py-8">
       <div className="text-left font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl my-12">
         Descubre nuestros últimos proyectos
       </div>

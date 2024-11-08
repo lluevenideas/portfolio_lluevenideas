@@ -34,7 +34,7 @@ const ProjectSectionLarge = () => {
   }, []);
 
   return (
-    <section ref={horizontalSection} className="overflow-x-hidden section-container bg-black">
+    <section id="projects" ref={horizontalSection} className="overflow-x-hidden section-container bg-black">
       <div className="text-left font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl my-12">
         Descubre nuestros últimos proyectos
       </div>
