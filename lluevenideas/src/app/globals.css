@@ -10,6 +10,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary-color: #0093FD;
+  --secondary-color: #FF5ED9;
+  --tertiary-color: #2FD6A9;
 }
 html {
   scroll-behavior: smooth;
@@ -80,17 +82,4 @@ body {
     text-wrap: balance;
   }
 }
-.aboutCard1 {
-  border-top-left-radius: 150px;
-  border-bottom-left-radius: 150px;
-}
 
-.aboutCard2 {
-  border-top-left-radius: 150px;
-  border-top-right-radius: 150px;
-}
-
-.aboutCard3 {
-  border-top-left-radius: 150px;
-  border-bottom-right-radius: 150px;
-}
