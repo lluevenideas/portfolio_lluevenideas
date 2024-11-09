@@ -1,6 +1,7 @@
 import React from 'react';
 import data_projects from '../../utils/data.project';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ProjectSectionSmall = () => {
   return (
@@ -13,9 +14,11 @@ const ProjectSectionSmall = () => {
         {data_projects && data_projects.map((project, index) => (
           <div key={index} className="mb-8 w-full max-w-lg flex flex-col items-center">
             <Link href={project.link} target="_blank">
-              <img
+              <Image
                 src={project.imageUrl}
                 alt={project.title}
+                width={200}
+                height={200}
                 className="image w-full h-auto max-h-64 object-cover transition-transform duration-300 hover:scale-105"
               />
             </Link>

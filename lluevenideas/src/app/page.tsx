@@ -1,4 +1,4 @@
-import ConocenosSection from "@/components/ConocenosSection/ConocenosSection";
+import ConocenosSection from "@/components/AboutUsSection/AboutUsSection";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import FooterSection from "@/components/FooterSection/FooterSection";
 import ProjectsSection from "@/components/ProjectsSection/ProjectsSection";

@@ -1,14 +1,13 @@
 'use client';
 import { useEffect, useRef } from "react";
-import lottie from "lottie-web";
+import lottie, { AnimationItem } from "lottie-web";
+import lluevenIdeas from "../../../public/hero/llueven_ideas.json";
 
 const HeroPrueba = () => {
-  const lluevenIdeas = require("../../../public/hero/llueven_ideas.json")
-
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let animationInstance: any;
+    let animationInstance: AnimationItem | null = null;
 
     if (containerRef.current) {
       animationInstance = lottie.loadAnimation({
@@ -19,7 +18,6 @@ const HeroPrueba = () => {
         autoplay: true,
       });
 
-
       animationInstance.setSpeed(0.5);
     }
 
@@ -28,7 +26,7 @@ const HeroPrueba = () => {
         animationInstance.destroy();
       }
     };
-  }, [lluevenIdeas]);
+  }, []);
 
   return (
     <div id="home" className="boxes-container w-full min-h-screen bg-black flex flex-col 
@@ -39,7 +37,6 @@ const HeroPrueba = () => {
           ref={containerRef}
         />
       </div>
-
     </div>
   );
 };

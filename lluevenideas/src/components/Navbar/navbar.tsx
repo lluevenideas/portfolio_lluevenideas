@@ -1,10 +1,10 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
-import logoBlack from "../../../public/logoSmallBlack.svg"
-import logoWhite from "../../../public/logoSmallWhite.svg"
-
+import logoBlack from "../../../public/logoSmallBlack.svg";
+import logoWhite from "../../../public/logoSmallWhite.svg";
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     if (currentScrollY > 50) {
       setIsScrolled(true); 
@@ -30,14 +30,14 @@ const Navbar = () => {
       setShowNavbar(true);
     }
     setLastScrollY(currentScrollY);
-  };
+  }, [lastScrollY]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, [handleScroll]);
 
   return (
     <nav
@@ -45,14 +45,12 @@ const Navbar = () => {
         isScrolled ? 'bg-white shadow-lg text-black' : 'bg-transparent text-white'
       } ${showNavbar ? '' : '-translate-y-full'}`}
     >
-      <div className="flex items-center">
-        {
-          isScrolled 
-          ? <Image src={logoBlack} alt={'Logo de llueven ideas, es la letra "L" más la letra "i"'} />
-          : <Image src={logoWhite} alt={'Logo de llueven ideas, es la letra "L" más la letra "i"'} />
-          
+      <Link className="flex items-center" href={'#home'}>
+        {isScrolled 
+          ? <Image src={logoBlack} alt={'Logo de llueven ideas, es la letra "L" más la letra "i"'} priority/>
+          : <Image src={logoWhite} alt={'Logo de llueven ideas, es la letra "L" más la letra "i"'} priority/>
         }
-      </div>
+      </Link>
 
       <div className="hidden md:flex items-end flex space-x-6">
         <a href="#services" className="hover:text-gray-500">Servicios</a>
