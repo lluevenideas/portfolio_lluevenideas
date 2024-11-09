@@ -5,10 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
 import data_projects from "../../utils/data.project";
 import Link from "next/link";
+import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const ProjectSectionLarge = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  
   const horizontalSection = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -44,7 +46,9 @@ const ProjectSectionLarge = () => {
           <div key={index} className="horizontal-panel">
             <div className="h-full">
               <Link href={project.link} target="_blank">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src={project.imageUrl}
                   alt={project.title}
                   className="image transition-transform duration-300 hover:scale-105"
