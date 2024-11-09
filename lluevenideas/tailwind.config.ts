@@ -15,6 +15,9 @@ const config: Config = {
       width: {
         'fill-available': '-webkit-fill-available',
       },
+      boxShadow: {
+        'custom-button': '4px 9px 0 rgba(0, 0, 0, 0.64)',
+      },
     },
   },
   plugins: [],

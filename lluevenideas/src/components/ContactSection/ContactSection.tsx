@@ -1,10 +1,72 @@
-import Link from "next/link";
+'use client';
+import { useState } from "react";
+import emailjs from "emailjs-com";
+import CustomAlert from "../CustomAlert/CustomAlert";
 
 const ContactSection = () => {
+  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [sending, setSending] = useState<boolean>(false);
+  const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+  const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID!;
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      to_name: "LLuevenIdeas",
+      message: message,
+      subject: selectedOption,
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, userId)
+      .then(
+        (response) => {
+          console.log("Correo enviado exitosamente", response);
+          setAlert({ message: "¡Mensaje enviado correctamente!", type: "success" });
+        },
+        (error) => {
+          console.log("Error al enviar correo", error);
+          setAlert({ message: "Ocurrió un error, por favor intenta nuevamente.", type: "error" });
+        }
+      )
+      .finally(() => {
+        setSending(false);
+        setMessage("");
+        setName("");
+        setEmail("");
+      });
+  };
+
   return (
-    <div
+    <section
       id="contact"
-      className="flex flex-col bg-white text-black w-full min-h-screen items-center px-8 py-16"
+      className="flex flex-col bg-white text-black w-full min-h-screen items-center px-4 sm:px-8 py-16"
       style={{
         backgroundImage: `url('/contact.jpg')`,
         backgroundPosition: "bottom left",
@@ -13,18 +75,18 @@ const ContactSection = () => {
         backgroundSize: "auto",
       }}
     >
-      <div className="w-[90%] h-full flex flex-col items-start z-10 ">
-        <h1 className="text-7xl text-start font-extrabold mb-4">
+      <div className="flex flex-col items-start z-10 w-full max-w-5xl">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl text-start font-extrabold mb-4">
           ¿Cómo podemos ayudarte?
         </h1>
         <div className="w-full h-[2px] bg-gradient-to-r from-black to-white mb-8"></div>
-        <div className="flex w-full h-[70vh] justify-center items-center border-[1px] border-black rounded-xl p-4 ">
-          <div className="relative w-1/2 h-full overflow-hidden flex flex-col items-start justify-center  ">
-            <p className="font-extrabold text-3xl text-left w-full py-10 ">
-              Si estás interesado en:
+        <div className="flex flex-col md:flex-row w-full h-auto md:h-[70vh] justify-center items-start border-[1px] border-black rounded-xl p-4 gap-8">
+          <div className="relative w-full md:w-1/2 h-auto md:h-4/6 overflow-hidden flex flex-col items-start justify-center">
+            <p className="font-extrabold text-xl sm:text-2xl md:text-3xl text-left w-full py-4 sm:py-10">
+              Estoy interesado en:
             </p>
 
-            <div className="flex flex-wrap w-full h-full gap-5 mb-8 justify-center ">
+            <div className="flex flex-wrap w-full md:w-5/6 h-full gap-2 mb-8 justify-center ">
               {[
                 "Página Web",
                 "Ofrecer servicios",
@@ -35,7 +97,11 @@ const ContactSection = () => {
               ].map((item, index) => (
                 <button
                   key={index}
-                  className="p-2 w-1/3 h-16  bg-white border-[4px] border-blue-500 text-black font-bold text-2xl rounded-2xl hover:bg-blue-500 hover:text-white transition duration-300"
+                  onClick={() => handleOptionClick(item)}
+                  className={`h-10 sm:h-12 px-2 sm:px-4 bg-white border-[4px] border-[--primary-color] text-black 
+                  font-bold text-sm sm:text-lg rounded-2xl hover:bg-[--primary-color] transition duration-300
+                  ${selectedOption === item ? "bg-[--secondary-color] border-[--secondary-color] hover:border-[--primary-color]"
+                      : ""}`}
                 >
                   {item}
                 </button>
@@ -43,21 +109,57 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-1/2 h-full  items-center justify-center gap-16   ">
-            <p className="font-extrabold text-7xl text-center w-[80%] leading-relaxed  ">
-              ¡Comunícate con nosotros!
-            </p>
-            <Link
-              href={"mailto:lluevenideas@gmail.com"}
-              target="_blank"
-              className="p-2 w-[70%] h-1/6 text-center content-center  bg-blue-500 border-[2px] border-black text-white font-bold text-2xl rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-2xl"
-            >
-              Consultar presupuesto
-            </Link>
+          <div className="flex flex-col w-full md:w-1/2 h-full items-center justify-center">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-8">
+              <input
+                type="text"
+                name="name"
+                placeholder="Tu nombre"
+                className="w-full sm:w-[80%] p-2 sm:p-4 border-b-2 border-black text-right"
+                value={name}
+                onChange={handleNameChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Tu correo electrónico"
+                className="w-full sm:w-[80%] p-2 sm:p-4 border-b-2 border-black text-right"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Escribe tu mensaje aquí"
+                className="w-full sm:w-[80%] p-2 sm:p-4 border-2 border-black border-l-transparent 
+                border-r-transparent border-t-transparent rounded-none text-right"
+                rows={5}
+                value={message}
+                onChange={handleChange}
+                required
+              ></textarea>
+              <button
+                type="submit"
+                disabled={sending}
+                className="p-2 sm:p-4 w-full sm:w-[70%] text-center bg-[--primary-color] border-[2px] 
+                border-black text-black font-bold text-lg sm:text-2xl rounded-full hover:bg-[--tertiary-color] 
+                transition duration-300 shadow-custom-button"
+              >
+                {sending ? "Enviando..." : "Enviar mensaje"}
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
+      {alert && (
+        <CustomAlert
+          message={alert.message}
+          type={alert.type}
+          onClose={() => setAlert(null)}
+        />
+      )}
+    </section>
   );
 };
 
