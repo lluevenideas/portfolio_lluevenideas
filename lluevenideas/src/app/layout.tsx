@@ -1,5 +1,5 @@
 
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/Navbar/navbar";
 import type { Metadata } from "next";
 import "./globals.css";
 import "./reset.css";
