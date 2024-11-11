@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
@@ -10,29 +10,51 @@ import Image from "next/image";
 
 const ProjectSectionLarge = () => {
   gsap.registerPlugin(ScrollTrigger);
-  
+
   const horizontalSection = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const slides = gsap.utils.toArray('.horizontal-panel');
-    const ctx = gsap.context(() => {
-      gsap.to(slides, {
-        xPercent: -100 * (slides.length - 1),
-        ease: 'none',
-        duration: 1,
-        scrollTrigger: {
-          trigger: horizontalSection.current,
-          pin: true,
-          scrub: 1,
-          snap: 1 / (slides.length - 1),
-          end: "+=3500",
-        },
-      });
-    }, horizontalSection);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+
+    // Comprobamos la consulta de medios en el primer renderizado
+    setIsMobile(mediaQuery.matches);
+
+    // Añadimos el listener para cambios en el tamaño de pantalla
+    mediaQuery.addEventListener('change', handleMediaChange);
 
     return () => {
-      ctx.revert();
+      mediaQuery.removeEventListener('change', handleMediaChange);
     };
+  }, []);
+
+  useGSAP(() => {
+    if (!isMobile) {
+      const slides = gsap.utils.toArray('.horizontal-panel');
+      const ctx = gsap.context(() => {
+        gsap.to(slides, {
+          xPercent: -100 * (slides.length - 1),
+          ease: 'none',
+          duration: 1,
+          scrollTrigger: {
+            trigger: horizontalSection.current,
+            pin: true,
+            scrub: 1,
+            snap: 1 / (slides.length - 1),
+            end: "+=3500",
+          },
+        });
+      }, horizontalSection);
+
+      return () => {
+        ctx.revert();
+      };
+    }
   }, []);
 
   return (

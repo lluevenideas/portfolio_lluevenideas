@@ -7,15 +7,27 @@ const ProjectSection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    
+    // Verificar la consulta de medios inicial
+    const checkMediaQuery = (mediaQuery: MediaQueryList) => {
+      setIsMobile(mediaQuery.matches);
     };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
+    
+    // Manejar cambios en la consulta de medios
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+    
+    // Verificar la consulta de medios en el primer renderizado
+    checkMediaQuery(mediaQuery);
+    
+    // Añadir listener para cambios en el tamaño de pantalla
+    mediaQuery.addEventListener('change', handleMediaChange);
+    
+    // Limpiar el listener al desmontar el componente
     return () => {
-      window.removeEventListener('resize', handleResize);
+      mediaQuery.removeEventListener('change', handleMediaChange);
     };
   }, []);
 

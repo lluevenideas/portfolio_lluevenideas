@@ -4,60 +4,79 @@ import { IServices } from "@/utils/interfaces";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const OurServicesLarge = () => {
   const view = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: view.current,
-        start: "top 10%",
-        end: "+=50",
-        scrub: 1,
-      }
-    });
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
 
-    // Animación de entrada para todas las tarjetas
-    cardsRef.current.forEach((card, index) => {
-      if (card) {
-        tl.fromTo(card, {
-          xPercent: index % 2 === 0 ? -150 : 150,
-          rotation: index % 2 === 0 ? -10 : 10,
-          opacity: 0
-        }, {
-          xPercent: 0,
-          rotation: 0,
-          opacity: 1,
-          duration: 8,
-          ease: "back.out(1.7)"
-        }, index * 0.1); 
-      }
-    });
+    // Comprobamos la consulta de medios en el primer renderizado
+    setIsMobile(mediaQuery.matches);
 
-    // Timeline para la animación de salida
-    const exitTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: view.current,
-        start: "bottom 80%",
-        end: '+=100',
-        scrub: 1,
-      }
-    });
-
-   
+    // Añadimos el listener para cambios en el tamaño de pantalla
+    mediaQuery.addEventListener('change', handleMediaChange);
 
     return () => {
-      tl.kill();
-      exitTL.kill();
+      mediaQuery.removeEventListener('change', handleMediaChange);
     };
-  }, { dependencies: [], scope: view, revertOnUpdate: true });
+  }, []);
+
+  useGSAP(() => {
+    if (!isMobile) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: view.current,
+          start: "top 10%",
+          end: "+=50",
+          scrub: 1,
+        }
+      });
+
+      // Animación de entrada para todas las tarjetas
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          tl.fromTo(card, {
+            xPercent: index % 2 === 0 ? -150 : 150,
+            rotation: index % 2 === 0 ? -10 : 10,
+            opacity: 0
+          }, {
+            xPercent: 0,
+            rotation: 0,
+            opacity: 1,
+            duration: 8,
+            ease: "back.out(1.7)"
+          }, index * 0.1);
+        }
+      });
+
+      // Timeline para la animación de salida
+      const exitTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: view.current,
+          start: "bottom 80%",
+          end: '+=100',
+          scrub: 1,
+        }
+      });
+
+      return () => {
+        tl.kill();
+        exitTL.kill();
+      };
+    }
+  }, { dependencies: [isMobile], scope: view, revertOnUpdate: true });
 
   return (
     <section
@@ -91,8 +110,8 @@ const OurServicesLarge = () => {
               >
                 <Image
                   style={{
-                    width: 'auto', 
-                    height: 'auto', 
+                    width: 'auto',
+                    height: 'auto',
                   }}
                   src={item.image}
                   alt={item.title}
