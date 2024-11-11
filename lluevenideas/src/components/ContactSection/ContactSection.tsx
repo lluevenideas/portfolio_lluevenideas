@@ -115,7 +115,7 @@ const ContactSection = () => {
                 type="text"
                 name="name"
                 placeholder="Tu nombre"
-                className="w-full sm:w-[80%] p-2 sm:p-4 border-b-2 border-black text-right"
+                className="w-full sm:w-[80%] p-2 sm:p-4 border-b-2 border-black text-right bg-transparent"
                 value={name}
                 onChange={handleNameChange}
                 required
@@ -124,7 +124,7 @@ const ContactSection = () => {
                 type="email"
                 name="email"
                 placeholder="Tu correo electrónico"
-                className="w-full sm:w-[80%] p-2 sm:p-4 border-b-2 border-black text-right"
+                className="w-full sm:w-[80%] p-2 sm:p-4 border-b-2 border-black text-right bg-transparent"
                 value={email}
                 onChange={handleEmailChange}
                 required
@@ -133,7 +133,7 @@ const ContactSection = () => {
                 name="message"
                 placeholder="Escribe tu mensaje aquí"
                 className="w-full sm:w-[80%] p-2 sm:p-4 border-2 border-black border-l-transparent 
-                border-r-transparent border-t-transparent rounded-none text-right"
+                border-r-transparent border-t-transparent rounded-none text-right bg-transparent"
                 rows={5}
                 value={message}
                 onChange={handleChange}

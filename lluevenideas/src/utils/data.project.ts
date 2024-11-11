@@ -3,7 +3,7 @@ const projects = [
     title: "ZPMC SPARES",
 
     tags: ["Página Web", "Diseño UX/UI"],
-    link: "https://www.andex-rhp.org/",
+    link: "https://www.zpmc-spares.com/",
     imageUrl: "/projects/zpmc.png",
   },
   {

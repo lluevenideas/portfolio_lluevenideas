@@ -64,11 +64,11 @@ const Navbar = () => {
       </button>
 
       {isOpen && (
-        <div className="md:hidden flex flex-col absolute top-16 right-4 bg-white text-gray-600 p-4 rounded-lg shadow-lg">
-          <a href="#service" className="mb-4 hover:text-gray-400">Servicios</a>
-          <a href="#about" className="mb-4 hover:text-gray-400">Nosotros</a>
-          <a href="#proyect" className="mb-4 hover:text-gray-400">Proyectos</a>
-          <a href="#contact" className="mb-4 hover:text-gray-400">Contacto</a>
+        <div className="md:hidden flex flex-col absolute top-16 right-4 bg-white text-black p-4 rounded-lg shadow-lg">
+          <Link onClick={handleToggle} href="#service" className="mb-4 hover:text-gray-400">Servicios</Link>
+          <Link onClick={handleToggle} href="#about" className="mb-4 hover:text-gray-400">Nosotros</Link>
+          <Link onClick={handleToggle} href="#proyect" className="mb-4 hover:text-gray-400">Proyectos</Link>
+          <Link onClick={handleToggle} href="#contact" className="mb-4 hover:text-gray-400">Contacto</Link>
         </div>
       )}
     </nav>
