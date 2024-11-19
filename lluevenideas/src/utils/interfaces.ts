@@ -6,3 +6,9 @@ export interface IServices {
   bg: string;
   bg_bottom: string;
 }
+export interface OpenGraph {
+  title: string;
+  description: string;
+  url: string;
+  type: 'website' | 'video.other' | 'image' 
+}
