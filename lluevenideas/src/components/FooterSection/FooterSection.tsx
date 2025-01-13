@@ -41,10 +41,10 @@ const FooterSection = () => {
 
           <div className="my-2 lg:my-0">
             <h4 className="text-white">
-              <Link href="#home">Instagram</Link>
+              <Link href="https://www.instagram.com/lluevenideas___/">Instagram</Link>
             </h4>
             <h4 className="text-white">
-              <Link href="#home">LinkedIn</Link>
+              <Link href="https://www.linkedin.com/company/lluevenideas/about/">LinkedIn</Link>
             </h4>
             <h4 className="text-white">
               <Link href="#home">WhatsApp</Link>
